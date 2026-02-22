@@ -7,6 +7,18 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\AnimateMe\\AnimateMe\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\quint\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\Components\\Pages\\Counter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\AnimateMe\\AnimateMe\\Components\\Pages\\Counter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\quint\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\Components\\Pages\\Home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\AnimateMe\\AnimateMe\\Components\\Pages\\Home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\quint\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\Components\\App.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\AnimateMe\\AnimateMe\\Components\\App.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\quint\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\AnimateMe.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\AnimateMe\\AnimateMe\\AnimateMe.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
@@ -26,17 +38,60 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 5,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Counter.razor",
+              "DocumentMoniker": "C:\\Users\\quint\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\Components\\Pages\\Counter.razor",
+              "RelativeDocumentMoniker": "app\\AnimateMe\\AnimateMe\\Components\\Pages\\Counter.razor",
+              "ToolTip": "C:\\Users\\quint\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\Components\\Pages\\Counter.razor",
+              "RelativeToolTip": "app\\AnimateMe\\AnimateMe\\Components\\Pages\\Counter.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-22T01:12:13.582Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Home.razor",
+              "DocumentMoniker": "C:\\Users\\quint\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\Components\\Pages\\Home.razor",
+              "RelativeDocumentMoniker": "app\\AnimateMe\\AnimateMe\\Components\\Pages\\Home.razor",
+              "ToolTip": "C:\\Users\\quint\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\Components\\Pages\\Home.razor",
+              "RelativeToolTip": "app\\AnimateMe\\AnimateMe\\Components\\Pages\\Home.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-22T01:12:01.264Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "App.razor",
+              "DocumentMoniker": "C:\\Users\\quint\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\Components\\App.razor",
+              "RelativeDocumentMoniker": "app\\AnimateMe\\AnimateMe\\Components\\App.razor",
+              "ToolTip": "C:\\Users\\quint\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\Components\\App.razor",
+              "RelativeToolTip": "app\\AnimateMe\\AnimateMe\\Components\\App.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-22T01:11:54.138Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "AnimateMe.csproj",
               "DocumentMoniker": "C:\\Users\\quint\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\AnimateMe.csproj",
               "RelativeDocumentMoniker": "app\\AnimateMe\\AnimateMe\\AnimateMe.csproj",
               "ToolTip": "C:\\Users\\quint\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\AnimateMe.csproj",
               "RelativeToolTip": "app\\AnimateMe\\AnimateMe\\AnimateMe.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2026-02-22T01:08:58.67Z",
               "EditorCaption": ""
@@ -49,14 +104,14 @@
               "RelativeDocumentMoniker": "app\\AnimateMe\\AnimateMe\\Program.cs",
               "ToolTip": "C:\\Users\\quint\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\Program.cs",
               "RelativeToolTip": "app\\AnimateMe\\AnimateMe\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-22T01:08:52.489Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "main.ipynb",
               "DocumentMoniker": "C:\\Users\\quint\\Documents\\GitHub\\Animate.Me\\engine\\main.ipynb",
               "RelativeDocumentMoniker": "engine\\main.ipynb",
@@ -68,7 +123,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "start.sh",
               "DocumentMoniker": "C:\\Users\\quint\\Documents\\GitHub\\Animate.Me\\engine\\start.sh",
               "RelativeDocumentMoniker": "engine\\start.sh",
@@ -76,12 +131,7 @@
               "RelativeToolTip": "engine\\start.sh",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-02-22T00:57:46.098Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+              "WhenOpened": "2026-02-22T00:57:46.098Z"
             }
           ]
         }
