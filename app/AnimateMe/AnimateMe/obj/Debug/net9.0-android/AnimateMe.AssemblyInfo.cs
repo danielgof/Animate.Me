@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AnimateMe")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+aff1a046217cbc5400466a62489e6d224e69c200")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+f1ccc04213c99023d97e5426855c751e8b5a4371")]
 [assembly: System.Reflection.AssemblyProductAttribute("AnimateMe")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AnimateMe")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
