@@ -1,7 +1,70 @@
-data
-venv
+# =========================================
+# .NET / Visual Studio / MAUI
+# =========================================
 
-.ipynb_checkpoints
+# Build artifacts
+bin/
+obj/
+[Bb]uild/
+[Ll]og/
+*.log
 
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.cache
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
 
-.vs
+# Visual Studio working folder
+.vs/
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# MAUI platform-specific build outputs
+**/Platforms/*/bin/
+**/Platforms/*/obj/
+
+# MAUI generated images
+**/Resources/AppIcon/appicon*.png
+**/Resources/Splash/splash*.png
+
+# Ignore localized resource DLLs
+*.dll.mui
+*/**/*.mui
+
+# =========================================
+# Python (your integration)
+# =========================================
+venv/
+data/
+.ipynb_checkpoints/
+
+# =========================================
+# OS / Editor junk
+# =========================================
+.DS_Store
+Thumbs.db
+*.swp
+*.tmp
+
+# =========================================
+# JetBrains Rider
+# =========================================
+.idea/
+*.iml
+
+# =========================================
+# Logs
+# =========================================
+*.log
+logs/
