@@ -34,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -49,6 +49,10 @@
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "HomePage.xaml.cs",
@@ -56,9 +60,10 @@
               "RelativeDocumentMoniker": "AnimateMe\\HomePage.xaml.cs",
               "ToolTip": "C:\\Users\\quint\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\HomePage.xaml.cs",
               "RelativeToolTip": "AnimateMe\\HomePage.xaml.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAA1wBQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAADwvyYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T23:48:53.119Z"
+              "WhenOpened": "2026-03-23T23:48:53.119Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -104,7 +109,7 @@
               "RelativeDocumentMoniker": "AnimateMe\\HomePage.xaml",
               "ToolTip": "C:\\Users\\quint\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\HomePage.xaml",
               "RelativeToolTip": "AnimateMe\\HomePage.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2026-03-23T23:48:12.31Z",
               "EditorCaption": ""
@@ -120,10 +125,6 @@
               "ViewState": "AgIAAAkAAAAAAAAAAAAAAB0AAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2026-03-23T23:47:26.112Z"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             }
           ]
         }

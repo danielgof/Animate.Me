@@ -1,29 +1,29 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Quinton\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\",
+  "WorkspaceRootPath": "C:\\Users\\quint\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4036B4D2-C4C9-439D-B6E4-7680816EC37D}|AnimateMe\\AnimateMe.csproj|c:\\users\\quinton\\documents\\github\\animate.me\\app\\animateme\\animateme\\homepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{4036B4D2-C4C9-439D-B6E4-7680816EC37D}|AnimateMe\\AnimateMe.csproj|c:\\users\\quint\\documents\\github\\animate.me\\app\\animateme\\animateme\\homepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{4036B4D2-C4C9-439D-B6E4-7680816EC37D}|AnimateMe\\AnimateMe.csproj|solutionrelative:animateme\\homepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4036B4D2-C4C9-439D-B6E4-7680816EC37D}|AnimateMe\\AnimateMe.csproj|c:\\users\\quinton\\documents\\github\\animate.me\\app\\animateme\\animateme\\homepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4036B4D2-C4C9-439D-B6E4-7680816EC37D}|AnimateMe\\AnimateMe.csproj|c:\\users\\quint\\documents\\github\\animate.me\\app\\animateme\\animateme\\homepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4036B4D2-C4C9-439D-B6E4-7680816EC37D}|AnimateMe\\AnimateMe.csproj|solutionrelative:animateme\\homepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4036B4D2-C4C9-439D-B6E4-7680816EC37D}|AnimateMe\\AnimateMe.csproj|c:\\users\\quinton\\documents\\github\\animate.me\\app\\animateme\\animateme\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{4036B4D2-C4C9-439D-B6E4-7680816EC37D}|AnimateMe\\AnimateMe.csproj|c:\\users\\quint\\documents\\github\\animate.me\\app\\animateme\\animateme\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{4036B4D2-C4C9-439D-B6E4-7680816EC37D}|AnimateMe\\AnimateMe.csproj|solutionrelative:animateme\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4036B4D2-C4C9-439D-B6E4-7680816EC37D}|AnimateMe\\AnimateMe.csproj|c:\\users\\quinton\\documents\\github\\animate.me\\app\\animateme\\animateme\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{4036B4D2-C4C9-439D-B6E4-7680816EC37D}|AnimateMe\\AnimateMe.csproj|c:\\users\\quint\\documents\\github\\animate.me\\app\\animateme\\animateme\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{4036B4D2-C4C9-439D-B6E4-7680816EC37D}|AnimateMe\\AnimateMe.csproj|solutionrelative:animateme\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4036B4D2-C4C9-439D-B6E4-7680816EC37D}|AnimateMe\\AnimateMe.csproj|c:\\users\\quinton\\documents\\github\\animate.me\\app\\animateme\\animateme\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4036B4D2-C4C9-439D-B6E4-7680816EC37D}|AnimateMe\\AnimateMe.csproj|c:\\users\\quint\\documents\\github\\animate.me\\app\\animateme\\animateme\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4036B4D2-C4C9-439D-B6E4-7680816EC37D}|AnimateMe\\AnimateMe.csproj|solutionrelative:animateme\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4036B4D2-C4C9-439D-B6E4-7680816EC37D}|AnimateMe\\AnimateMe.csproj|c:\\users\\quinton\\documents\\github\\animate.me\\app\\animateme\\animateme\\animateme.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "AbsoluteMoniker": "D:0:0:{4036B4D2-C4C9-439D-B6E4-7680816EC37D}|AnimateMe\\AnimateMe.csproj|c:\\users\\quint\\documents\\github\\animate.me\\app\\animateme\\animateme\\animateme.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{4036B4D2-C4C9-439D-B6E4-7680816EC37D}|AnimateMe\\AnimateMe.csproj|solutionrelative:animateme\\animateme.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
@@ -34,12 +34,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 7,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
@@ -56,11 +52,11 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "HomePage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Quinton\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\HomePage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\quint\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\HomePage.xaml.cs",
               "RelativeDocumentMoniker": "AnimateMe\\HomePage.xaml.cs",
-              "ToolTip": "C:\\Users\\Quinton\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\HomePage.xaml.cs",
+              "ToolTip": "C:\\Users\\quint\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\HomePage.xaml.cs",
               "RelativeToolTip": "AnimateMe\\HomePage.xaml.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAA1wBQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAADwvyYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-23T23:48:53.119Z",
               "EditorCaption": ""
@@ -69,50 +65,47 @@
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "App.xaml",
-              "DocumentMoniker": "C:\\Users\\Quinton\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\App.xaml",
+              "DocumentMoniker": "C:\\Users\\quint\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\App.xaml",
               "RelativeDocumentMoniker": "AnimateMe\\App.xaml",
-              "ToolTip": "C:\\Users\\Quinton\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\App.xaml",
+              "ToolTip": "C:\\Users\\quint\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\App.xaml",
               "RelativeToolTip": "AnimateMe\\App.xaml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-03-23T23:48:50.898Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-23T23:48:50.898Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "AppShell.xaml",
-              "DocumentMoniker": "C:\\Users\\Quinton\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\AppShell.xaml",
+              "DocumentMoniker": "C:\\Users\\quint\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\AppShell.xaml",
               "RelativeDocumentMoniker": "AnimateMe\\AppShell.xaml",
-              "ToolTip": "C:\\Users\\Quinton\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\AppShell.xaml",
+              "ToolTip": "C:\\Users\\quint\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\AppShell.xaml",
               "RelativeToolTip": "AnimateMe\\AppShell.xaml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-03-23T23:48:49.892Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-23T23:48:49.892Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "MauiProgram.cs",
-              "DocumentMoniker": "C:\\Users\\Quinton\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\MauiProgram.cs",
+              "DocumentMoniker": "C:\\Users\\quint\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\MauiProgram.cs",
               "RelativeDocumentMoniker": "AnimateMe\\MauiProgram.cs",
-              "ToolTip": "C:\\Users\\Quinton\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\MauiProgram.cs",
+              "ToolTip": "C:\\Users\\quint\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\MauiProgram.cs",
               "RelativeToolTip": "AnimateMe\\MauiProgram.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T23:48:48.013Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-23T23:48:48.013Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "HomePage.xaml",
-              "DocumentMoniker": "C:\\Users\\Quinton\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\HomePage.xaml",
+              "DocumentMoniker": "C:\\Users\\quint\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\HomePage.xaml",
               "RelativeDocumentMoniker": "AnimateMe\\HomePage.xaml",
-              "ToolTip": "C:\\Users\\Quinton\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\HomePage.xaml",
+              "ToolTip": "C:\\Users\\quint\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\HomePage.xaml",
               "RelativeToolTip": "AnimateMe\\HomePage.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAApAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2026-03-23T23:48:12.31Z",
               "EditorCaption": ""
@@ -120,15 +113,18 @@
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "AnimateMe",
-              "DocumentMoniker": "C:\\Users\\Quinton\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\AnimateMe.csproj",
+              "Title": "AnimateMe.csproj",
+              "DocumentMoniker": "C:\\Users\\quint\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\AnimateMe.csproj",
               "RelativeDocumentMoniker": "AnimateMe\\AnimateMe.csproj",
-              "ToolTip": "C:\\Users\\Quinton\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\AnimateMe.csproj*",
-              "RelativeToolTip": "AnimateMe\\AnimateMe.csproj*",
+              "ToolTip": "C:\\Users\\quint\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\AnimateMe.csproj",
+              "RelativeToolTip": "AnimateMe\\AnimateMe.csproj",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAAB0AAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-03-23T23:47:26.112Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-23T23:47:26.112Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             }
           ]
         }

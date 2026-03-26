@@ -11,7 +11,10 @@
             HorizontalOptions="Center" />
 
         <Image
-            x:Name="imageDisplay"/>
+            x:Name="imageDisplay"
+            HorizontalOptions="Center"
+            HeightRequest="200"
+            />
 
         <Button
             Text="This is a button"
