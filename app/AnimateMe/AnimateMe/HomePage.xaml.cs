@@ -88,9 +88,6 @@ public partial class HomePage : ContentPage
                     //    Debug.WriteLine(file);
                     //}
                     // insert your retartded script here i am so done with this
-                    dynamic sys = Py.Import("sys");
-
-                    sys.path.append(@"C:\Users\Quinton\Documents\GitHub\Animate.Me\app\AnimateMe\AnimateMe");
 
                     dynamic pythonScript = Py.Import("pythonscript"); // no .py
 
