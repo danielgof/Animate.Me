@@ -395,3 +395,4 @@ src/Core/AndroidNative/build/reports/
 # Python stuff
 data
 venv
+.keras
