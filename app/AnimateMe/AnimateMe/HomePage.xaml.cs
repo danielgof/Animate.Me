@@ -3,6 +3,7 @@ using System.Text;
 using IronPython;
 using IronPython.Runtime;
 using Microsoft.Scripting.Hosting;
+using Python.Runtime;
 
 namespace AnimateMe;
 
@@ -38,58 +39,68 @@ public partial class HomePage : ContentPage
 
             string imageString = Convert.ToBase64String(imageData);
 
-            ScriptEngine engine = IronPython.Hosting.Python.CreateEngine();
+            if (false)
+            {
+                #region IronPython method
+                var engine = IronPython.Hosting.Python.CreateEngine();
 
-            var debugStream = new DebugStream();
+                var outputStream = new MemoryStream();
+                var writer = new StreamWriter(outputStream, Encoding.UTF8)
+                {
+                    AutoFlush = true
+                };
 
-            engine.Runtime.IO.SetOutput(debugStream, Encoding.UTF8);
+                engine.Runtime.IO.SetOutput(outputStream, writer);
 
-            string pyScript = "import math\nresult = math.sqrt(25)\nprint(\"The result: \" + str(result))";
+                string pyScript = @"
+    import math
+    result = math.sqrt(25)
+    print('The result: ' + str(result))
+    ";
 
-            ScriptSource scriptSource = engine.CreateScriptSourceFromString(pyScript);
+                var source = engine.CreateScriptSourceFromString(pyScript);
+                source.Execute();
 
-            var pyResult = scriptSource.Execute();
+                // IMPORTANT: rewind stream
+                writer.Flush();
+                outputStream.Position = 0;
 
-            // send to api call here
+                string outputText = new StreamReader(outputStream).ReadToEnd();
+                outputText = outputText.Replace("\0", "");
 
-        }
-    }
-}
+                Debug.WriteLine(outputText);
+                #endregion
+            }
+            else
+            {
+                #region Python.NET method
 
-public class DebugStream : Stream
-{
-    private readonly MemoryStream _buffer = new MemoryStream();
+                Runtime.PythonDLL = "C:\\Program Files\\Python313\\python313.dll";
+                PythonEngine.Initialize();
+                using (Py.GIL())
+                {
+                    //string projectPath = @"C:\Users\Quinton\Documents\GitHub\Animate.Me\app\AnimateMe\AnimateMe";
 
-    public override bool CanRead => false;
-    public override bool CanSeek => false;
-    public override bool CanWrite => true;
-    public override long Length => 0;
-    public override long Position { get => 0; set { } }
+                    //var files = Directory.GetFiles(projectPath);
 
-    public override void Flush()
-    {
-        if (_buffer.Length > 0)
-        {
-            string text = Encoding.UTF8.GetString(_buffer.ToArray());
-            System.Diagnostics.Debug.Write(text);
-            _buffer.SetLength(0);
-        }
-    }
+                    //foreach (var file in files)
+                    //{
+                    //    Debug.WriteLine(file);
+                    //}
+                    // insert your retartded script here i am so done with this
+                    dynamic sys = Py.Import("sys");
 
-    public override int Read(byte[] buffer, int offset, int count) => 0;
-    public override long Seek(long offset, SeekOrigin origin) => 0;
-    public override void SetLength(long value) { }
+                    sys.path.append(@"C:\Users\Quinton\Documents\GitHub\Animate.Me\app\AnimateMe\AnimateMe");
 
-    public override void Write(byte[] buffer, int offset, int count)
-    {
-        // Append to buffer
-        _buffer.Write(buffer, offset, count);
-        string utf8String = Encoding.UTF8.GetString(buffer);
+                    dynamic pythonScript = Py.Import("pythonscript"); // no .py
 
-        // If newline detected, flush
-        if (buffer[offset + count - 1] == (byte)'\n')
-        {
-            Flush();
+                    var r = pythonScript.say_hello();
+                    string otehrResult = r.ToString();
+                    Debug.WriteLine(otehrResult);
+                }
+
+                #endregion
+            }
         }
     }
 }
