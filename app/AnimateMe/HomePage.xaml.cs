@@ -75,16 +75,21 @@ public partial class HomePage : ContentPage
             {
                 #region Python.NET method
 
+<<<<<<< Updated upstream:app/AnimateMe/HomePage.xaml.cs
                 Runtime.PythonDLL = @"C:\Users\dg_os\Documents\Programming\Projects\Animate.Me\app\AnimateMe\Python\DLL\python313.dll";
+=======
+                Runtime.PythonDLL = @"C:\Users\quint\Documents\GitHub\Animate.Me\app\AnimateMe\AnimateMe\Python\DLL\python313.dll";
+
+>>>>>>> Stashed changes:app/AnimateMe/AnimateMe/HomePage.xaml.cs
                 PythonEngine.Initialize();
                 using (Py.GIL())
                 {
                     dynamic sys = Py.Import("sys");
                     sys.path.append(@"C:\Users\dg_os\Documents\Programming\Projects\Animate.Me\app\AnimateMe\Python\");
 
-                    dynamic pythonScript = Py.Import("pythonscript"); // no .py
+                    dynamic pythonScript = Py.Import("bvhjoint"); // no .py
 
-                    var r = pythonScript.say_hello();
+                    var r = pythonScript.write_bvh_no_hierarchy("C:\\Users\\quint\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\Python\\Data\\motion_data_3d.json");
                     string otehrResult = r.ToString();
                     Debug.WriteLine(otehrResult);
                 }

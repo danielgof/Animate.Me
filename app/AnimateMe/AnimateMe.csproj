@@ -60,6 +60,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="Python\venv\**" />
+	  <Compile Remove="Python\venv\**" />
+	  <EmbeddedResource Remove="Python\venv\**" />
+	  <MauiCss Remove="Python\venv\**" />
+	  <MauiXaml Remove="Python\venv\**" />
+	  <None Remove="Python\venv\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="IronPython" Version="3.4.2" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
