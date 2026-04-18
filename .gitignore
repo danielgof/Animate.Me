@@ -392,6 +392,8 @@ temp
 # Gradle build reports
 src/Core/AndroidNative/build/reports/
 
+.vs
+
 # Python stuff
 data
 venv
