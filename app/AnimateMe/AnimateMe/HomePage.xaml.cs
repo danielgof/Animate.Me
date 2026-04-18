@@ -75,19 +75,12 @@ public partial class HomePage : ContentPage
             {
                 #region Python.NET method
 
-                Runtime.PythonDLL = @"C:\Users\dg_os\AppData\Local\Python\pythoncore-3.14-64\python314.dll";
+                Runtime.PythonDLL = @"C:\Users\quint\Documents\GitHub\Animate.Me\app\AnimateMe\AnimateMe\Python\DLL\python313.dll";
                 PythonEngine.Initialize();
                 using (Py.GIL())
                 {
-                    //string projectPath = @"C:\Users\Quinton\Documents\GitHub\Animate.Me\app\AnimateMe\AnimateMe";
-
-                    //var files = Directory.GetFiles(projectPath);
-
-                    //foreach (var file in files)
-                    //{
-                    //    Debug.WriteLine(file);
-                    //}
-                    // insert your retartded script here i am so done with this
+                    dynamic sys = Py.Import("sys");
+                    sys.path.append(@"C:\Users\quint\Documents\GitHub\Animate.Me\app\AnimateMe\AnimateMe\Python\");
 
                     dynamic pythonScript = Py.Import("pythonscript"); // no .py
 
