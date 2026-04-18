@@ -5,7 +5,7 @@ Module for creating Blender frames from motion data.
 import json
 import os
 
-import bpy
+import bpy  # pylint: disable=import-error
 
 # Load your joint data
 data_path = os.path.join(os.getcwd(), "motion_data.json")

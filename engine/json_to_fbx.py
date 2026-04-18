@@ -5,7 +5,7 @@ Module for converting JSON motion data to FBX format.
 import json
 import os
 
-import bpy
+import bpy  # pylint: disable=import-error
 
 # Load the data we just created
 data_path = os.path.join(os.getcwd(), "motion_data.json")
