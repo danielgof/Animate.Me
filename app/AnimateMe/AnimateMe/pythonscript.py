@@ -1,8 +1,20 @@
-﻿import os
+﻿"""
+Module for basic Python functions.
+"""
+
+import os
+
 
 def say_hello():
-	return "This is a test"
+    """
+    Return a test message.
+    """
+    return "This is a test"
+
 
 def test(message):
-	directory = os.getcwd()
-	return message + ":" + directory
+    """
+    Append current directory to message.
+    """
+    directory = os.getcwd()
+    return message + ":" + directory

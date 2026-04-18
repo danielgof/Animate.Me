@@ -1,10 +1,15 @@
-import bpy
+"""
+Module for creating Blender frames from motion data.
+"""
+
 import json
 import os
 
+import bpy
+
 # Load your joint data
 data_path = os.path.join(os.getcwd(), "motion_data.json")
-with open(data_path, "r") as f:
+with open(data_path, "r", encoding="utf-8") as f:
     frames = json.load(f)
 
 bpy.ops.wm.read_homefile(use_empty=True)

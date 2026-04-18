@@ -1,5 +1,10 @@
-from ultralytics import YOLO
+"""
+Module for pose estimation using YOLO.
+"""
+
 import json
+
+from ultralytics import YOLO
 
 model = YOLO("yolo11n-pose.pt")
 results = model.track("./data/video/deadlift_1.mp4", persist=True)
@@ -13,7 +18,7 @@ for frame in results:
         animation_data.append(kpts)
 
 # Save to a temporary file
-with open("motion_data.json", "w") as f:
+with open("motion_data.json", "w", encoding="utf-8") as f:
     json.dump(animation_data, f)
 
 print("Success: Motion data saved to motion_data.json")
