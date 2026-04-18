@@ -1,36 +1,42 @@
-import mediapipe as mp
-from mediapipe.tasks import python
-from mediapipe.tasks.python import vision
-import cv2
+"""
+Module for converting coordinates to JSON format.
+"""
+
 import json
 
+import cv2
+import mediapipe as mp
+
 # 1. Setup the Task
-model_path = 'pose_landmarker_heavy.task' 
+MODEL_PATH = 'pose_landmarker_heavy.task'
 BaseOptions = mp.tasks.BaseOptions
 PoseLandmarker = mp.tasks.vision.PoseLandmarker
 PoseLandmarkerOptions = mp.tasks.vision.PoseLandmarkerOptions
 VisionRunningMode = mp.tasks.vision.RunningMode
 
 options = PoseLandmarkerOptions(
-    base_options=BaseOptions(model_asset_path=model_path),
+    base_options=BaseOptions(model_asset_path=MODEL_PATH),
     running_mode=VisionRunningMode.VIDEO)
 
 animation_data = []
-cap = cv2.VideoCapture("./data/video/deadlift_1.mp4")
-fps = cap.get(cv2.CAP_PROP_FPS)
+cap = cv2.VideoCapture("./data/video/deadlift_1.mp4")  # pylint: disable=no-member
+fps = cap.get(cv2.CAP_PROP_FPS)  # pylint: disable=no-member
 
 # Get frame dimensions for coordinate scaling
-frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
-frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))  # pylint: disable=no-member
+frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))  # pylint: disable=no-member
 
 with PoseLandmarker.create_from_options(options) as landmarker:
     frame_count = 0
     while cap.isOpened():
         ret, frame = cap.read()
-        if not ret: break
+        if not ret:
+            break
 
-        mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
-        
+        mp_image = mp.Image(
+            image_format=mp.ImageFormat.SRGB,
+            data=cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))  # pylint: disable=no-member
+
         timestamp_ms = int((frame_count / fps) * 1000)
         result = landmarker.detect_for_video(mp_image, timestamp_ms)
 
@@ -45,22 +51,21 @@ with PoseLandmarker.create_from_options(options) as landmarker:
                 # Scale normalized coordinates to pixel values
                 pixel_x = int(landmark.x * frame_width)
                 pixel_y = int(landmark.y * frame_height)
-                
+
                 # Draw a small green circle at each joint
-                cv2.circle(frame, (pixel_x, pixel_y), 5, (0, 255, 0), -1)
+                cv2.circle(frame, (pixel_x, pixel_y), 5, (0, 255, 0), -1)  # pylint: disable=no-member
 
         # Show the frame with coordinates drawn
-        cv2.imshow('Deadlift Processing...', frame)
+        cv2.imshow('Deadlift Processing...', frame)  # pylint: disable=no-member
 
-        if cv2.waitKey(1) & 0xFF == ord('q'):
+        if cv2.waitKey(1) & 0xFF == ord('q'):  # pylint: disable=no-member
             break
-        
+
         frame_count += 1
 
 cap.release()
-cv2.destroyAllWindows()
-
-with open("motion_data_3d.json", "w") as f:
+cv2.destroyAllWindows()  # pylint: disable=no-member
+with open("motion_data_3d.json", "w", encoding="utf-8") as f:
     json.dump(animation_data, f)
 
 print(f"Successfully saved {len(animation_data)} frames of 3D motion data.")
