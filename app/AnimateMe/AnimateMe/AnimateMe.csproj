@@ -75,7 +75,7 @@
 
 	<ItemGroup>
 	  <Folder Include="Pages\" />
-	  <Folder Include="Python\" />
+	  <Folder Include="Python\Data\" />
 	</ItemGroup>
 
 	<ItemGroup>

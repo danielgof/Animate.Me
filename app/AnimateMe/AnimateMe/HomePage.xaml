@@ -2,23 +2,40 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AnimateMe.HomePage"
-             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             Title="HomePage">
-    <VerticalStackLayout>
-        <Label 
-            Text="This is where a picture will be taken"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+             Title="Home"
+             BackgroundColor="#EFEFEF">
 
-        <Image
-            x:Name="imageDisplay"
-            HorizontalOptions="Center"
-            HeightRequest="200"
-            />
+    <VerticalStackLayout Padding="20" Spacing="25">
 
-        <Button
-            Text="This is a button"
-            Clicked="OnUploadFile"/>
+        <Frame BackgroundColor="White"
+               CornerRadius="16"
+               Padding="20"
+               HasShadow="True">
+
+            <VerticalStackLayout Spacing="15">
+
+                <Label 
+                    Text="Photo Preview"
+                    FontSize="20"
+                    FontAttributes="Bold" />
+
+                <Image
+                    x:Name="imageDisplay"
+                    HeightRequest="200"
+                    Aspect="AspectFit"
+                    BackgroundColor="#F0F0F0"
+                    />
+
+                <Button
+                    Text="Upload Photo"
+                    BackgroundColor="#4A90E2"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="45"
+                    Clicked="OnUploadFile" />
+
+            </VerticalStackLayout>
+        </Frame>
 
     </VerticalStackLayout>
 </ContentPage>
