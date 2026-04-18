@@ -75,7 +75,7 @@ public partial class HomePage : ContentPage
             {
                 #region Python.NET method
 
-                Runtime.PythonDLL = @"C:\Users\dg_os\AppData\Local\Programs\Python\Python312\python312.dll";
+                Runtime.PythonDLL = @"C:\Users\dg_os\AppData\Local\Python\pythoncore-3.14-64\python314.dll";
                 PythonEngine.Initialize();
                 using (Py.GIL())
                 {
