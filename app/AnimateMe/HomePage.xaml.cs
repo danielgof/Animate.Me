@@ -75,12 +75,12 @@ public partial class HomePage : ContentPage
             {
                 #region Python.NET method
 
-                Runtime.PythonDLL = @"C:\Users\quint\Documents\GitHub\Animate.Me\app\AnimateMe\AnimateMe\Python\DLL\python313.dll";
+                Runtime.PythonDLL = @"C:\Users\dg_os\Documents\Programming\Projects\Animate.Me\app\AnimateMe\Python\DLL\python313.dll";
                 PythonEngine.Initialize();
                 using (Py.GIL())
                 {
                     dynamic sys = Py.Import("sys");
-                    sys.path.append(@"C:\Users\quint\Documents\GitHub\Animate.Me\app\AnimateMe\AnimateMe\Python\");
+                    sys.path.append(@"C:\Users\dg_os\Documents\Programming\Projects\Animate.Me\app\AnimateMe\Python\");
 
                     dynamic pythonScript = Py.Import("pythonscript"); // no .py
 
