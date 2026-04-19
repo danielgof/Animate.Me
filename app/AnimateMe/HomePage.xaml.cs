@@ -75,20 +75,20 @@ public partial class HomePage : ContentPage
             {
                 #region Python.NET method
 
-                Runtime.PythonDLL = @"C:\Users\dg_os\Documents\Programming\Projects\Animate.Me\app\AnimateMe\Python\DLL\python313.dll";
+                //Runtime.PythonDLL = @"C:\Users\dg_os\Documents\Programming\Projects\Animate.Me\app\AnimateMe\Python\DLL\python313.dll";
 
-                //string baseDir = AppContext.BaseDirectory;
+                string baseDir = AppContext.BaseDirectory;
 
-                //string pythonDllPath = Path.Combine(
-                //    baseDir,
-                //    "Python",
-                //    "DLL",
-                //    "python313.dll"
-                //);
+                string pythonDllPath = Path.Combine(
+                    baseDir,
+                    "Python",
+                    "DLL",
+                    "python313.dll"
+                );
 
-                //Debug.WriteLine("Python DLL Path: " + pythonDllPath);
+                Debug.WriteLine("Python DLL Path: " + pythonDllPath);
 
-                //Runtime.PythonDLL = pythonDllPath;
+                Runtime.PythonDLL = pythonDllPath;
 
                 PythonEngine.Initialize();
                 using (Py.GIL())
