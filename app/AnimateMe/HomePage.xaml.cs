@@ -101,9 +101,6 @@ public partial class HomePage : ContentPage
                         sys.path.append(@"C:\Users\dg_os\Documents\Programming\Projects\Animate.Me\engine\my_env\Lib\site-packages");
 
                         dynamic script = Py.Import("bvhjoint");
-                        //PyObject r = script.write_bvh_no_hierarchy(
-                        //    @"C:\Users\dg_os\Documents\Programming\Projects\Animate.Me\app\AnimateMe\Python\motion_data_3d.json"
-                        //);
                         PyObject r = script.write_bvh_no_hierarchy(
                             "motion_data_3d.json"
                         );
