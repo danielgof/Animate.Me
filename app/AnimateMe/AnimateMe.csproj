@@ -104,6 +104,7 @@
 		<Folder Include="Pages\" />
 		<Folder Include="Python\Data\" />
 		<Folder Include="Python\DLL\" />
+		<Folder Include="engine" />
 	</ItemGroup>
 
 	<ItemGroup>
