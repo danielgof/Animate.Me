@@ -1,9 +1,16 @@
 ﻿import json
 import numpy as np
+import os
 
 SCALE = 100.0
 
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+
 def write_bvh_no_hierarchy(json_path, output_path="output.bvh"):
+    if not os.path.isabs(json_path):
+        json_path = os.path.join(BASE_DIR, json_path)
     with open(json_path, "r") as f:
         frames = np.array(json.load(f))
 

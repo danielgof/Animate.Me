@@ -75,25 +75,45 @@ public partial class HomePage : ContentPage
             {
                 #region Python.NET method
 
-<<<<<<< Updated upstream:app/AnimateMe/HomePage.xaml.cs
-                Runtime.PythonDLL = @"C:\Users\dg_os\Documents\Programming\Projects\Animate.Me\app\AnimateMe\Python\DLL\python313.dll";
-=======
-                Runtime.PythonDLL = @"C:\Users\quint\Documents\GitHub\Animate.Me\app\AnimateMe\AnimateMe\Python\DLL\python313.dll";
+                //Runtime.PythonDLL = @"C:\Users\dg_os\Documents\Programming\Projects\Animate.Me\app\AnimateMe\Python\DLL\python313.dll";
 
->>>>>>> Stashed changes:app/AnimateMe/AnimateMe/HomePage.xaml.cs
+                string baseDir = AppContext.BaseDirectory;
+
+                string pythonDllPath = Path.Combine(
+                    baseDir,
+                    "Python",
+                    "DLL",
+                    "python313.dll"
+                );
+
+                Debug.WriteLine("Python DLL Path: " + pythonDllPath);
+
+                Runtime.PythonDLL = pythonDllPath;
+
                 PythonEngine.Initialize();
                 using (Py.GIL())
                 {
-                    dynamic sys = Py.Import("sys");
-                    sys.path.append(@"C:\Users\dg_os\Documents\Programming\Projects\Animate.Me\app\AnimateMe\Python\");
+                    try
+                    {
+                        dynamic sys = Py.Import("sys");
 
-                    dynamic pythonScript = Py.Import("bvhjoint"); // no .py
+                        sys.path.append(@"C:\Users\dg_os\Documents\Programming\Projects\Animate.Me\app\AnimateMe\Python");
+                        sys.path.append(@"C:\Users\dg_os\Documents\Programming\Projects\Animate.Me\engine\my_env\Lib\site-packages");
 
-                    var r = pythonScript.write_bvh_no_hierarchy("C:\\Users\\quint\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\Python\\Data\\motion_data_3d.json");
-                    string otehrResult = r.ToString();
-                    Debug.WriteLine(otehrResult);
+                        dynamic script = Py.Import("bvhjoint");
+                        PyObject r = script.write_bvh_no_hierarchy(
+                            "motion_data_3d.json"
+                        );
+
+                        Debug.WriteLine(r.ToString());
+                    }
+                    catch (Python.Runtime.PythonException ex)
+                    {
+                        Debug.WriteLine("PYTHON ERROR:");
+                        Debug.WriteLine(ex.Message);
+                        Debug.WriteLine(ex.StackTrace);
+                    }
                 }
-
                 #endregion
             }
         }
