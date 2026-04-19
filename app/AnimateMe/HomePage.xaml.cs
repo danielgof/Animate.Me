@@ -85,10 +85,7 @@ public partial class HomePage : ContentPage
                         dynamic sys = Py.Import("sys");
 
                         sys.path.append(@"C:\Users\dg_os\Documents\Programming\Projects\Animate.Me\app\AnimateMe\Python");
-                        sys.path.append(@"C:\Users\dg_os\Documents\Programming\Projects\Animate.Me\engine\venv\Lib\site-packages");
-
-                        //dynamic script = Py.Import("pythonscript");
-                        //PyObject r = script.say_hello();
+                        sys.path.append(@"C:\Users\dg_os\Documents\Programming\Projects\Animate.Me\engine\my_env\Lib\site-packages");
 
                         dynamic script = Py.Import("bvhjoint");
                         PyObject r = script.write_bvh_no_hierarchy(
