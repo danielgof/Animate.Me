@@ -77,37 +77,50 @@ public partial class HomePage : ContentPage
 
                 Runtime.PythonDLL = @"C:\Users\dg_os\Documents\Programming\Projects\Animate.Me\app\AnimateMe\Python\DLL\python313.dll";
 
-                Environment.SetEnvironmentVariable("PYTHONPATH", @"C:\Users\dg_os\Documents\Programming\Projects\Animate.Me\engine\venv");
-
+                //Environment.SetEnvironmentVariable("PYTHONPATH", @"C:\Users\dg_os\Documents\Programming\Projects\Animate.Me\engine\venv");
 
                 PythonEngine.Initialize();
                 using (Py.GIL())
                 {
-                    try
-                    {
-                        //dynamic script = Py.Import("bvhjoint");
+                    dynamic sys = Py.Import("sys");
 
-                        dynamic sys = Py.Import("sys");
+                    sys.path.append(@"C:\Users\dg_os\Documents\Programming\Projects\Animate.Me\app\AnimateMe\Python");
+                    sys.path.append(@"C:\Users\dg_os\Documents\Programming\Projects\Animate.Me\engine\venv\Lib\site-packages");
 
-                        sys.path.append(@"C:\Users\dg_os\Documents\Programming\Projects\Animate.Me\app\AnimateMe\Python\");
+                    dynamic script = Py.Import("pythonscript");
+                    PyObject r = script.say_hello();
 
-
-                        dynamic script = Py.Import("pythonscript");
-                        var r = script.say_hello();
-
-                        //var r = script.write_bvh_no_hierarchy(
-                        //    @"C:\Users\dg_os\Documents\Programming\Projects\Animate.Me\app\AnimateMe\Python\motion_data_3d.json"
-                        //);
-
-                        Debug.WriteLine(r.ToString());
-                    }
-                    catch (Python.Runtime.PythonException ex)
-                    {
-                        Debug.WriteLine("PYTHON ERROR:");
-                        Debug.WriteLine(ex.Message);
-                        Debug.WriteLine(ex.StackTrace);
-                    }
+                    Debug.WriteLine(r.ToString());
                 }
+
+
+                //using (Py.GIL())
+                //{
+                //    try
+                //    {
+                //        //dynamic script = Py.Import("bvhjoint");
+
+                //        //dynamic sys = Py.Import("sys");
+
+                //        //sys.path.append(@"C:\Users\dg_os\Documents\Programming\Projects\Animate.Me\app\AnimateMe\Python\");
+
+
+                //        dynamic script = Py.Import("pythonscript");
+                //        var r = script.say_hello();
+
+                //        //var r = script.write_bvh_no_hierarchy(
+                //        //    @"C:\Users\dg_os\Documents\Programming\Projects\Animate.Me\app\AnimateMe\Python\motion_data_3d.json"
+                //        //);
+
+                //        Debug.WriteLine(r.ToString());
+                //    }
+                //    catch (Python.Runtime.PythonException ex)
+                //    {
+                //        Debug.WriteLine("PYTHON ERROR:");
+                //        Debug.WriteLine(ex.Message);
+                //        Debug.WriteLine(ex.StackTrace);
+                //    }
+                //}
 
                 #endregion
             }
