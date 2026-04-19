@@ -75,23 +75,38 @@ public partial class HomePage : ContentPage
             {
                 #region Python.NET method
 
-<<<<<<< Updated upstream:app/AnimateMe/HomePage.xaml.cs
                 Runtime.PythonDLL = @"C:\Users\dg_os\Documents\Programming\Projects\Animate.Me\app\AnimateMe\Python\DLL\python313.dll";
-=======
-                Runtime.PythonDLL = @"C:\Users\quint\Documents\GitHub\Animate.Me\app\AnimateMe\AnimateMe\Python\DLL\python313.dll";
 
->>>>>>> Stashed changes:app/AnimateMe/AnimateMe/HomePage.xaml.cs
+                Environment.SetEnvironmentVariable("PYTHONPATH", @"C:\Users\dg_os\Documents\Programming\Projects\Animate.Me\engine\venv");
+
+
                 PythonEngine.Initialize();
                 using (Py.GIL())
                 {
-                    dynamic sys = Py.Import("sys");
-                    sys.path.append(@"C:\Users\dg_os\Documents\Programming\Projects\Animate.Me\app\AnimateMe\Python\");
+                    try
+                    {
+                        //dynamic script = Py.Import("bvhjoint");
 
-                    dynamic pythonScript = Py.Import("bvhjoint"); // no .py
+                        dynamic sys = Py.Import("sys");
 
-                    var r = pythonScript.write_bvh_no_hierarchy("C:\\Users\\quint\\Documents\\GitHub\\Animate.Me\\app\\AnimateMe\\AnimateMe\\Python\\Data\\motion_data_3d.json");
-                    string otehrResult = r.ToString();
-                    Debug.WriteLine(otehrResult);
+                        sys.path.append(@"C:\Users\dg_os\Documents\Programming\Projects\Animate.Me\app\AnimateMe\Python\");
+
+
+                        dynamic script = Py.Import("pythonscript");
+                        var r = script.say_hello();
+
+                        //var r = script.write_bvh_no_hierarchy(
+                        //    @"C:\Users\dg_os\Documents\Programming\Projects\Animate.Me\app\AnimateMe\Python\motion_data_3d.json"
+                        //);
+
+                        Debug.WriteLine(r.ToString());
+                    }
+                    catch (Python.Runtime.PythonException ex)
+                    {
+                        Debug.WriteLine("PYTHON ERROR:");
+                        Debug.WriteLine(ex.Message);
+                        Debug.WriteLine(ex.StackTrace);
+                    }
                 }
 
                 #endregion
