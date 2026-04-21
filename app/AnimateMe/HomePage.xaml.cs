@@ -75,13 +75,11 @@ public partial class HomePage : ContentPage
             {
                 #region Python.NET method
 
-                //Runtime.PythonDLL = @"C:\Users\dg_os\Documents\Programming\Projects\Animate.Me\app\AnimateMe\Python\DLL\python313.dll";
-
                 string baseDir = AppContext.BaseDirectory;
 
                 string pythonDllPath = Path.Combine(
                     baseDir,
-                    "Python",
+                    "engine",
                     "DLL",
                     "python313.dll"
                 );
