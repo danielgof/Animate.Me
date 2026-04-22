@@ -16,11 +16,23 @@ public partial class HomePage : ContentPage
 
     async void OnUploadFile(object sender, EventArgs args)
     {
-        var result = await FilePicker.PickAsync(new PickOptions
+        var customFileType = new FilePickerFileType(
+            new Dictionary<DevicePlatform, IEnumerable<string>>
+            {
+                { DevicePlatform.iOS, new[] { "public.data" } }, // Generic identifier
+                { DevicePlatform.Android, new[] { "application/*" } }, // All app files
+                { DevicePlatform.WinUI, new[] { ".pdf", ".docx", ".txt" } }, // Specific extensions
+                { DevicePlatform.MacCatalyst, new[] { "public.data" } },
+            });
+
+        PickOptions options = new PickOptions
         {
-            PickerTitle = "pickerImage",
+            PickerTitle = "Please select a file",
             FileTypes = FilePickerFileType.Images
-        });
+            //FileTypes = customFileType,
+        };
+
+        var result = await FilePicker.Default.PickAsync(options);
 
         if (result is not null)
         {
@@ -97,6 +109,9 @@ public partial class HomePage : ContentPage
 
                         sys.path.append(@"C:\Users\dg_os\Documents\Programming\Projects\Animate.Me\app\AnimateMe\engine");
                         sys.path.append(@"C:\Users\dg_os\Documents\Programming\Projects\Animate.Me\app\AnimateMe\engine\my_env\Lib\site-packages");
+
+                        dynamic videoScript = Py.Import("coords_to_json");
+                        videoScript.process_video();
 
                         dynamic script = Py.Import("bvhjoint");
                         PyObject r = script.write_bvh_no_hierarchy(
