@@ -16,14 +16,14 @@ VisionRunningMode = mp.tasks.vision.RunningMode
 
 
 
-def process_video(file_path="./data/video/deadlift_1.mp4"):
+def process_video(file_path="./deadlift_1.mp4"):
 
     options = PoseLandmarkerOptions(
         base_options=BaseOptions(model_asset_path=MODEL_PATH),
         running_mode=VisionRunningMode.VIDEO)
 
     animation_data = []
-    cap = cv2.VideoCapture(file_path)  # pylint: disable=no-member
+    cap = cv2.VideoCapture("./deadlift_1.mp4")  # pylint: disable=no-member
     fps = cap.get(cv2.CAP_PROP_FPS)  # pylint: disable=no-member
 
     # Get frame dimensions for coordinate scaling
