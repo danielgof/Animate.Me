@@ -29,6 +29,8 @@ public partial class HomePage : ContentPage
         string pythonDllPath = Path.Combine(engineRoot, "DLL", "python313.dll");
         string sitePackages = Path.Combine(envRoot, "Lib", "site-packages");
 
+        Debug.WriteLine($"Base Directory: {pythonDllPath}");
+
         try
         {
             // 2. Initialize Python Engine
@@ -47,15 +49,19 @@ public partial class HomePage : ContentPage
                 sys.path.append(sitePackages);
 
                 // 3. Execute Python Scripts
-                Debug.WriteLine("Processing video...");
-                dynamic videoScript = Py.Import("coords_to_json");
-                videoScript.process_video();
+                dynamic script = Py.Import("pythonscript");
+                PyObject result = script.say_hello();
+                Debug.WriteLine($"Python Script Result: {result}");
 
-                Debug.WriteLine("Generating BVH...");
-                dynamic bvhScript = Py.Import("bvhjoint");
-                PyObject result = bvhScript.write_bvh_no_hierarchy("motion_data_3d.json");
+                //Debug.WriteLine("Processing video...");
+                //dynamic videoScript = Py.Import("coords_to_json");
+                //videoScript.process_video();
 
-                Debug.WriteLine($"Result: {result}");
+                //Debug.WriteLine("Generating BVH...");
+                //dynamic bvhScript = Py.Import("bvhjoint");
+                //PyObject result = bvhScript.write_bvh_no_hierarchy("motion_data_3d.json");
+
+                //Debug.WriteLine($"Result: {result}");
             }
         }
         catch (PythonException ex)
