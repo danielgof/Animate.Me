@@ -11,13 +11,14 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 def write_bvh_no_hierarchy(json_path, output_path="output.bvh"):
     if not os.path.isabs(json_path):
         json_path = os.path.join(BASE_DIR, json_path)
+
     with open(json_path, "r") as f:
         frames = np.array(json.load(f))
 
     num_frames, num_joints, _ = frames.shape
     frames = frames * SCALE
 
-    lines = []  # <--- collect all output here
+    lines = []
 
     # --- HIERARCHY ---
     lines.append("HIERARCHY")
@@ -26,12 +27,25 @@ def write_bvh_no_hierarchy(json_path, output_path="output.bvh"):
     lines.append("\tOFFSET 0 0 0")
     lines.append("\tCHANNELS 6 Xposition Yposition Zposition Zrotation Xrotation Yrotation")
 
-    # Write each joint as a sibling, not nested
+    # Add End Site for ROOT
+    lines.append("\tEnd Site")
+    lines.append("\t{")
+    lines.append("\t\tOFFSET 0 0 0")
+    lines.append("\t}")
+
+    # Sibling joints
     for j in range(1, num_joints):
         lines.append(f"\tJOINT Joint{j}")
         lines.append("\t{")
         lines.append("\t\tOFFSET 0 0 0")
         lines.append("\t\tCHANNELS 6 Xposition Yposition Zposition Zrotation Xrotation Yrotation")
+
+        # Required End Site
+        lines.append("\t\tEnd Site")
+        lines.append("\t\t{")
+        lines.append("\t\t\tOFFSET 0 0 0")
+        lines.append("\t\t}")
+
         lines.append("\t}")
 
     lines.append("}")
@@ -45,12 +59,12 @@ def write_bvh_no_hierarchy(json_path, output_path="output.bvh"):
         values = []
         for joint in frame:
             x, y, z = joint
-            values += [x, y, z, 0, 0, 0]
+            values += [x, y, z, 0, 0, 0]  # rotations = 0
         lines.append(" ".join(f"{v:.6f}" for v in values))
 
     # Write to file
+    text = "\n".join(lines)
     with open(output_path, "w") as f:
-        f.write("\n".join(lines))
+        f.write(text)
 
-    # Return the full BVH text as a string
-    return "\n".join(lines)
+    return text
