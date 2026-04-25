@@ -8,7 +8,7 @@ import cv2
 import mediapipe as mp
 
 # 1. Setup the Task
-MODEL_PATH = 'pose_landmarker_heavy.task'
+MODEL_PATH = './pose_landmarker_heavy.task'
 BaseOptions = mp.tasks.BaseOptions
 PoseLandmarker = mp.tasks.vision.PoseLandmarker
 PoseLandmarkerOptions = mp.tasks.vision.PoseLandmarkerOptions

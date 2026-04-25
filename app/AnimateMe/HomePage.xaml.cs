@@ -23,13 +23,13 @@ public partial class HomePage : ContentPage
 
         string baseDir = AppContext.BaseDirectory;
         string engineRoot = Path.Combine(baseDir, "engine");
-        string envRoot = Path.Combine(engineRoot, "venv");
+        string envRoot = Path.Combine(engineRoot, "python3.11");
 
         // Path to the Python DLL in your localized engine folder
         string pythonDllPath = Path.Combine(engineRoot, "python3.11", "python311.dll");
         string sitePackages = Path.Combine(envRoot, "Lib", "site-packages");
 
-        Debug.WriteLine($"Base Directory: {pythonDllPath}");
+        Debug.WriteLine($"sitePackages Directory: {sitePackages}");
 
         try
         {
@@ -57,11 +57,11 @@ public partial class HomePage : ContentPage
                 dynamic videoScript = Py.Import("coords_to_json");
                 videoScript.process_video();
 
-                //Debug.WriteLine("Generating BVH...");
-                //dynamic bvhScript = Py.Import("bvhjoint");
-                //PyObject result = bvhScript.write_bvh_no_hierarchy("motion_data_3d.json");
+                Debug.WriteLine("Generating BVH...");
+                dynamic bvhScript = Py.Import("bvhjoint");
+                PyObject result = bvhScript.write_bvh_no_hierarchy("motion_data_3d.json");
 
-                //Debug.WriteLine($"Result: {result}");
+                Debug.WriteLine($"Result: {result}");
             }
         }
         catch (PythonException ex)
