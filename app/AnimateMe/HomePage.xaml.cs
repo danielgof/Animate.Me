@@ -59,7 +59,11 @@ public partial class HomePage : ContentPage
                         "motion_data_3d.json"
                     );
 
-                    Debug.WriteLine(r.ToString());
+                    string bvhText = r.ToString();
+
+                    // Write to a file
+                    File.WriteAllText("output.bvh", bvhText);
+                    Debug.WriteLine(bvhText);
                 }
                 catch (Python.Runtime.PythonException ex)
                 {
