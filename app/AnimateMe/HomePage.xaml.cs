@@ -17,11 +17,13 @@ public partial class HomePage : ContentPage
 
     async void OnUploadFile(object sender, EventArgs args)
     {
+
         var options = new MediaPickerOptions
         {
             Title = "Select video"
         };
         FileResult? fileResult = await MediaPicker.Default.PickVideoAsync(options);
+
 
         if (fileResult is not null)
         {
@@ -61,15 +63,59 @@ public partial class HomePage : ContentPage
 
                     string bvhText = r.ToString();
 
-                    // Write to a file
-                    File.WriteAllText("output.bvh", bvhText);
-                    Debug.WriteLine(bvhText);
-                }
-                catch (Python.Runtime.PythonException ex)
+                // IMPORTANT: rewind stream
+                writer.Flush();
+                outputStream.Position = 0;
+
+                string outputText = new StreamReader(outputStream).ReadToEnd();
+                outputText = outputText.Replace("\0", "");
+
+                Debug.WriteLine(outputText);
+                #endregion
+            }
+            else
+            {
+                #region Python.NET method
+
+                string baseDir = AppContext.BaseDirectory;
+
+                string pythonDllPath = Path.Combine(
+                    baseDir,
+                    "engine",
+                    "DLL",
+                    "python313.dll"
+                );
+
+                Debug.WriteLine("Python DLL Path: " + pythonDllPath);
+
+                Runtime.PythonDLL = pythonDllPath;
+
+                PythonEngine.Initialize();
+                using (Py.GIL())
                 {
-                    Debug.WriteLine("PYTHON ERROR:");
-                    Debug.WriteLine(ex.Message);
-                    Debug.WriteLine(ex.StackTrace);
+                    try
+                    {
+                        dynamic sys = Py.Import("sys");
+
+                        sys.path.append(@"C:\Users\dg_os\Documents\Programming\Projects\Animate.Me\app\AnimateMe\engine");
+                        sys.path.append(@"C:\Users\dg_os\Documents\Programming\Projects\Animate.Me\app\AnimateMe\engine\my_env\Lib\site-packages");
+
+                        dynamic videoScript = Py.Import("coords_to_json");
+                        videoScript.process_video();
+
+                        dynamic script = Py.Import("bvhjoint");
+                        PyObject r = script.write_bvh_no_hierarchy(
+                            "motion_data_3d.json"
+                        );
+
+                        Debug.WriteLine(r.ToString());
+                    }
+                    catch (Python.Runtime.PythonException ex)
+                    {
+                        Debug.WriteLine("PYTHON ERROR:");
+                        Debug.WriteLine(ex.Message);
+                        Debug.WriteLine(ex.StackTrace);
+                    }
                 }
             }
         }
