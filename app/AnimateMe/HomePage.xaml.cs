@@ -26,7 +26,7 @@ public partial class HomePage : ContentPage
         string envRoot = Path.Combine(engineRoot, "my_env");
 
         // Path to the Python DLL in your localized engine folder
-        string pythonDllPath = Path.Combine(engineRoot, "DLL", "python313.dll");
+        string pythonDllPath = Path.Combine(engineRoot, "python3.11", "python311.dll");
         string sitePackages = Path.Combine(envRoot, "Lib", "site-packages");
 
         Debug.WriteLine($"Base Directory: {pythonDllPath}");
@@ -49,9 +49,9 @@ public partial class HomePage : ContentPage
                 sys.path.append(sitePackages);
 
                 // 3. Execute Python Scripts
-                dynamic script = Py.Import("pythonscript");
-                PyObject result = script.say_hello();
-                Debug.WriteLine($"Python Script Result: {result}");
+                //dynamic script = Py.Import("pythonscript");
+                //PyObject result = script.say_hello();
+                //Debug.WriteLine($"Python Script Result: {result}");
 
                 //Debug.WriteLine("Processing video...");
                 //dynamic videoScript = Py.Import("coords_to_json");
