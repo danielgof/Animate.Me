@@ -23,7 +23,7 @@ public partial class HomePage : ContentPage
 
         string baseDir = AppContext.BaseDirectory;
         string engineRoot = Path.Combine(baseDir, "engine");
-        string envRoot = Path.Combine(engineRoot, "my_env");
+        string envRoot = Path.Combine(engineRoot, "venv");
 
         // Path to the Python DLL in your localized engine folder
         string pythonDllPath = Path.Combine(engineRoot, "python3.11", "python311.dll");
@@ -53,9 +53,9 @@ public partial class HomePage : ContentPage
                 //PyObject result = script.say_hello();
                 //Debug.WriteLine($"Python Script Result: {result}");
 
-                //Debug.WriteLine("Processing video...");
-                //dynamic videoScript = Py.Import("coords_to_json");
-                //videoScript.process_video();
+                Debug.WriteLine("Processing video...");
+                dynamic videoScript = Py.Import("coords_to_json");
+                videoScript.process_video();
 
                 //Debug.WriteLine("Generating BVH...");
                 //dynamic bvhScript = Py.Import("bvhjoint");
