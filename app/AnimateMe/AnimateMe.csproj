@@ -96,8 +96,6 @@
 
 	<ItemGroup>
 		<Folder Include="Pages\" />
-		<Folder Include="engine\Data\" />
-		<Folder Include="engine\DLL\" />
 		<Folder Include="engine\" />
 	</ItemGroup>
 
@@ -108,9 +106,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Include="engine\DLL\python313.dll">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
 		<Content Include="engine\**\*.*">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>

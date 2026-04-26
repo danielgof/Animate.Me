@@ -2,13 +2,18 @@
 Module for converting coordinates to JSON format.
 """
 
+import os
 import json
-
 import cv2
 import mediapipe as mp
 
-# 1. Setup the Task
-MODEL_PATH = './pose_landmarker_heavy.task'
+# Get the directory where THIS script is located
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Build the absolute path to the model file
+MODEL_PATH = os.path.join(SCRIPT_DIR, 'pose_landmarker_heavy.task')
+# Build the absolute path to the video (if it's in the same folder)
+VIDEO_PATH = os.path.join(SCRIPT_DIR, 'deadlift_1.mp4')
 BaseOptions = mp.tasks.BaseOptions
 PoseLandmarker = mp.tasks.vision.PoseLandmarker
 PoseLandmarkerOptions = mp.tasks.vision.PoseLandmarkerOptions
@@ -24,7 +29,7 @@ def process_video(model_path):
     )
 
     animation_data = []
-    cap = cv2.VideoCapture("./deadlift_1.mp4")  # pylint: disable=no-member
+    cap = cv2.VideoCapture(VIDEO_PATH)  # pylint: disable=no-member
     fps = cap.get(cv2.CAP_PROP_FPS)  # pylint: disable=no-member
 
     # Get frame dimensions for coordinate scaling
@@ -61,7 +66,7 @@ def process_video(model_path):
                     cv2.circle(frame, (pixel_x, pixel_y), 5, (0, 255, 0), -1)  # pylint: disable=no-member
 
             # Show the frame with coordinates drawn
-            cv2.imshow('Deadlift Processing...', frame)  # pylint: disable=no-member
+            # cv2.imshow('Deadlift Processing...', frame)  # pylint: disable=no-member
 
             if cv2.waitKey(1) & 0xFF == ord('q'):  # pylint: disable=no-member
                 break
@@ -70,7 +75,9 @@ def process_video(model_path):
 
     cap.release()
     cv2.destroyAllWindows()  # pylint: disable=no-member
-    with open("motion_data_3d.json", "w", encoding="utf-8") as f:
+    with open(os.path.join(SCRIPT_DIR,"motion_data_3d.json"), "w", encoding="utf-8") as f:
         json.dump(animation_data, f)
 
     print(f"Successfully saved {len(animation_data)} frames of 3D motion data.")
+
+process_video(MODEL_PATH)

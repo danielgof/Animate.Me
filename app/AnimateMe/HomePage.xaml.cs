@@ -58,11 +58,11 @@ public partial class HomePage : ContentPage
                 dynamic videoScript = Py.Import("coords_to_json");
                 videoScript.process_video(modelPath);
 
-                Debug.WriteLine("Generating BVH...");
-                dynamic bvhScript = Py.Import("bvhjoint");
-                PyObject result = bvhScript.write_bvh_no_hierarchy("motion_data_3d.json");
+                //Debug.WriteLine("Generating BVH...");
+                //dynamic bvhScript = Py.Import("bvhjoint");
+                //PyObject result = bvhScript.write_bvh_no_hierarchy("motion_data_3d.json");
 
-                Debug.WriteLine($"Result: {result}");
+                //Debug.WriteLine($"Result: {result}");
             }
         }
         catch (PythonException ex)
