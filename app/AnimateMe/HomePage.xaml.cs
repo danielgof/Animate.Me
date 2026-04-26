@@ -1,5 +1,4 @@
 using System.Diagnostics;
-using CommunityToolkit.Maui.Views;
 using Python.Runtime;
 
 namespace AnimateMe;
@@ -9,7 +8,6 @@ public partial class HomePage : ContentPage
 
     string outputBvhPath;
 
-    // outputBvhPath = Path.Combine(engineRoot, "animation_result.bvh");
     public HomePage()
     {
         InitializeComponent();
@@ -17,16 +15,26 @@ public partial class HomePage : ContentPage
 
     private async void OnDownloadClicked(object sender, EventArgs e)
     {
-        if (!File.Exists(outputBvhPath))
+        try
         {
-            await DisplayAlert("Error", "File not found", "OK");
-            return;
-        }
+            // Ensure path is absolute and exists
+            if (File.Exists(outputBvhPath))
+            {
+                // Instead of Launcher.OpenAsync(OpenFileRequest), 
+                // try opening the folder itself so the user sees the file.
+                string folderPath = Path.GetDirectoryName(outputBvhPath);
 
-        await Launcher.Default.OpenAsync(new OpenFileRequest
+                await Launcher.Default.OpenAsync(new OpenFileRequest
+                {
+                    File = new ReadOnlyFile(outputBvhPath)
+                });
+            }
+        }
+        catch (ArgumentException)
         {
-            File = new ReadOnlyFile(outputBvhPath)
-        });
+            // This specifically catches the 'Range' error
+            await DisplayAlert("Path Error", "The system could not access this file path format.", "OK");
+        }
     }
 
     private async void OnUploadFile(object sender, EventArgs args)
@@ -39,7 +47,7 @@ public partial class HomePage : ContentPage
         // 1. Setup UI and Paths
         videoPlayer.Source = fileResult.FullPath;
 
-        string baseDir = AppContext.BaseDirectory;
+        // string baseDir = AppContext.BaseDirectory;
         string engineRoot = Path.Combine(AppContext.BaseDirectory, "engine");
         string modelPath = Path.Combine(engineRoot, "pose_landmarker_heavy.task");
         string envRoot = Path.Combine(engineRoot, "python3.11");
