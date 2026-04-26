@@ -22,12 +22,15 @@ public partial class HomePage : ContentPage
         videoPlayer.Source = fileResult.FullPath;
 
         string baseDir = AppContext.BaseDirectory;
-        string engineRoot = Path.Combine(baseDir, "engine");
-        string envRoot = Path.Combine(engineRoot, "my_env");
+        string engineRoot = Path.Combine(AppContext.BaseDirectory, "engine");
+        string modelPath = Path.Combine(engineRoot, "pose_landmarker_heavy.task");
+        string envRoot = Path.Combine(engineRoot, "python3.11");
 
         // Path to the Python DLL in your localized engine folder
-        string pythonDllPath = Path.Combine(engineRoot, "DLL", "python313.dll");
+        string pythonDllPath = Path.Combine(engineRoot, "python3.11", "python311.dll");
         string sitePackages = Path.Combine(envRoot, "Lib", "site-packages");
+
+        Debug.WriteLine($"sitePackages Directory: {sitePackages}");
 
         try
         {
@@ -47,9 +50,13 @@ public partial class HomePage : ContentPage
                 sys.path.append(sitePackages);
 
                 // 3. Execute Python Scripts
+                //dynamic script = Py.Import("pythonscript");
+                //PyObject result = script.say_hello();
+                //Debug.WriteLine($"Python Script Result: {result}");
+
                 Debug.WriteLine("Processing video...");
                 dynamic videoScript = Py.Import("coords_to_json");
-                videoScript.process_video();
+                videoScript.process_video(modelPath);
 
                 Debug.WriteLine("Generating BVH...");
                 dynamic bvhScript = Py.Import("bvhjoint");
