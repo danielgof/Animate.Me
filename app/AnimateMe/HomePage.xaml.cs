@@ -22,7 +22,8 @@ public partial class HomePage : ContentPage
         videoPlayer.Source = fileResult.FullPath;
 
         string baseDir = AppContext.BaseDirectory;
-        string engineRoot = Path.Combine(baseDir, "engine");
+        string engineRoot = Path.Combine(AppContext.BaseDirectory, "engine");
+        string modelPath = Path.Combine(engineRoot, "pose_landmarker_heavy.task");
         string envRoot = Path.Combine(engineRoot, "python3.11");
 
         // Path to the Python DLL in your localized engine folder
@@ -55,7 +56,7 @@ public partial class HomePage : ContentPage
 
                 Debug.WriteLine("Processing video...");
                 dynamic videoScript = Py.Import("coords_to_json");
-                videoScript.process_video();
+                videoScript.process_video(modelPath);
 
                 Debug.WriteLine("Generating BVH...");
                 dynamic bvhScript = Py.Import("bvhjoint");
