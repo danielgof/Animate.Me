@@ -107,7 +107,7 @@ public partial class HomePage : ContentPage
                     File.WriteAllText(outputBvhPath, result.ToString());
                     loadingSpinner.IsRunning = false;
                     downloadButton.IsVisible = true;
-                    outputBvhPath = Path.Combine(engineRoot, "animation_result.bvh");
+                    this.outputBvhPath = Path.Combine(engineRoot, "animation_result.bvh");
                     Debug.WriteLine($"Successfully wrote BVH to: {outputBvhPath}");
                 }
                 catch (Exception ex)
