@@ -1,40 +1,74 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="AnimateMe.HomePage"
-             Title="Home"
-             BackgroundColor="#EFEFEF">
+             Title="Animate.Me"
+             BackgroundColor="#F8F9FA">
 
-    <VerticalStackLayout Padding="20" Spacing="25">
-
-        <Frame BackgroundColor="White"
-               CornerRadius="16"
-               Padding="20"
-               HasShadow="True">
-
-            <VerticalStackLayout Spacing="15">
-
-                <Label 
-                    Text="Photo Preview"
-                    FontSize="20"
-                    FontAttributes="Bold" />
-
-                <toolkit:MediaElement 
-                    x:Name="videoPlayer"
-                    Aspect="AspectFit"
-                    HeightRequest="250"/>
-
-                <Button
-                    Text="Upload Photo"
-                    BackgroundColor="#4A90E2"
-                    TextColor="White"
-                    CornerRadius="10"
-                    HeightRequest="45"
-                    Clicked="OnUploadFile" />
-
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="30">
+            
+            <VerticalStackLayout Spacing="4">
+                <Label Text="Motion Capture" 
+                       FontSize="28" 
+                       FontAttributes="Bold" 
+                       TextColor="#2D3436"/>
+                <Label Text="Upload a video to extract 3D motion data" 
+                       FontSize="14" 
+                       TextColor="#636E72"/>
             </VerticalStackLayout>
-        </Frame>
 
-    </VerticalStackLayout>
+            <Border StrokeShape="RoundRectangle 20"
+                    StrokeThickness="0"
+                    BackgroundColor="White"
+                    Padding="0">
+                <Border.Shadow>
+                    <Shadow Brush="Black" Offset="0,10" Radius="20" Opacity="0.05" />
+                </Border.Shadow>
+
+                <VerticalStackLayout>
+                    <Grid HeightRequest="300" BackgroundColor="#F1F2F6">
+                        <Label Text="" 
+                               FontFamily="MauiSymbols" 
+                               FontSize="40" 
+                               HorizontalOptions="Center" 
+                               VerticalOptions="Center" 
+                               TextColor="#B2BEC3" />
+                        
+                        <toolkit:MediaElement 
+                            x:Name="videoPlayer"
+                            Aspect="AspectFill"
+                            HeightRequest="300"/>
+                        
+                        <ActivityIndicator x:Name="loadingSpinner"
+                                         IsRunning="False"
+                                         Color="#4A90E2"
+                                         WidthRequest="50"
+                                         HorizontalOptions="Center" />
+                    </Grid>
+
+                    <VerticalStackLayout Padding="20" Spacing="15">
+                        <Button
+                            Text="Select Video File"
+                            BackgroundColor="#4A90E2"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            CornerRadius="12"
+                            HeightRequest="50"
+                            Clicked="OnUploadFile">
+                            <Button.Shadow>
+                                <Shadow Brush="#4A90E2" Opacity="0.3" Offset="0,4" Radius="10"/>
+                            </Button.Shadow>
+                        </Button>
+                        
+                        <Label Text="Supported formats: .mp4, .mov" 
+                               FontSize="11" 
+                               HorizontalOptions="Center" 
+                               TextColor="#A4A4A4" />
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
