@@ -21,7 +21,7 @@ VisionRunningMode = mp.tasks.vision.RunningMode
 
 
 
-def process_video(model_path):
+def process_video(model_path=MODEL_PATH):
 
     options = PoseLandmarkerOptions(
         base_options=BaseOptions(model_asset_path=model_path),
@@ -80,4 +80,4 @@ def process_video(model_path):
 
     print(f"Successfully saved {len(animation_data)} frames of 3D motion data.")
 
-process_video(MODEL_PATH)
+# process_video(MODEL_PATH)
