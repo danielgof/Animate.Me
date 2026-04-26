@@ -21,15 +21,16 @@ VisionRunningMode = mp.tasks.vision.RunningMode
 
 
 
-def process_video(model_path=MODEL_PATH):
+def process_video(video_path, model_path):
 
     options = PoseLandmarkerOptions(
         base_options=BaseOptions(model_asset_path=model_path),
         running_mode=VisionRunningMode.VIDEO
     )
 
+
     animation_data = []
-    cap = cv2.VideoCapture(VIDEO_PATH)  # pylint: disable=no-member
+    cap = cv2.VideoCapture(video_path)  # pylint: disable=no-member
     fps = cap.get(cv2.CAP_PROP_FPS)  # pylint: disable=no-member
 
     # Get frame dimensions for coordinate scaling
@@ -73,11 +74,14 @@ def process_video(model_path=MODEL_PATH):
 
             frame_count += 1
 
-    cap.release()
-    cv2.destroyAllWindows()  # pylint: disable=no-member
-    with open(os.path.join(SCRIPT_DIR,"motion_data_3d.json"), "w", encoding="utf-8") as f:
-        json.dump(animation_data, f)
+    # cap.release()
+    # cv2.destroyAllWindows()  # pylint: disable=no-member
 
-    print(f"Successfully saved {len(animation_data)} frames of 3D motion data.")
+    # with open(os.path.join(SCRIPT_DIR,"motion_data_3d.json"), "w", encoding="utf-8") as f:
+    #     json.dump(animation_data, f)
 
-# process_video(MODEL_PATH)
+    # print(f"Successfully saved {len(animation_data)} frames of 3D motion data.")
+
+    return animation_data
+
+# process_video(VIDEO_PATH, MODEL_PATH)

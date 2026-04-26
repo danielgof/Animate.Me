@@ -35,6 +35,7 @@
                                VerticalOptions="Center" 
                                TextColor="#B2BEC3" />
                         
+
                         <toolkit:MediaElement 
                             x:Name="videoPlayer"
                             Aspect="AspectFill"
@@ -48,6 +49,21 @@
                     </Grid>
 
                     <VerticalStackLayout Padding="20" Spacing="15">
+                        <ProgressBar x:Name="progressBar"
+                            Progress="0"
+                            HeightRequest="6"
+                            BackgroundColor="#E0E0E0"
+                            ProgressColor="#4A90E2"
+                            IsVisible="False"/>
+
+                        <Button x:Name="downloadButton"
+                            Text="Download BVH"
+                            BackgroundColor="#00B894"
+                            TextColor="White"
+                            CornerRadius="12"
+                            HeightRequest="50"
+                            IsVisible="False"
+                            Clicked="OnDownloadClicked"/>
                         <Button
                             Text="Select Video File"
                             BackgroundColor="#4A90E2"

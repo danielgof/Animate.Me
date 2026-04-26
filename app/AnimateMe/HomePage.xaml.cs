@@ -6,9 +6,27 @@ namespace AnimateMe;
 
 public partial class HomePage : ContentPage
 {
+
+    string outputBvhPath;
+
+    // outputBvhPath = Path.Combine(engineRoot, "animation_result.bvh");
     public HomePage()
     {
         InitializeComponent();
+    }
+
+    private async void OnDownloadClicked(object sender, EventArgs e)
+    {
+        if (!File.Exists(outputBvhPath))
+        {
+            await DisplayAlert("Error", "File not found", "OK");
+            return;
+        }
+
+        await Launcher.Default.OpenAsync(new OpenFileRequest
+        {
+            File = new ReadOnlyFile(outputBvhPath)
+        });
     }
 
     private async void OnUploadFile(object sender, EventArgs args)
@@ -44,7 +62,8 @@ public partial class HomePage : ContentPage
             using (Py.GIL())
             {
                 dynamic sys = Py.Import("sys");
-
+                sys.stdout = sys.__stdout__;
+                sys.stderr = sys.__stderr__;
                 // Add local engine and site-packages to sys.path dynamically
                 sys.path.append(engineRoot);
                 sys.path.append(sitePackages);
@@ -54,15 +73,47 @@ public partial class HomePage : ContentPage
                 //PyObject result = script.say_hello();
                 //Debug.WriteLine($"Python Script Result: {result}");
 
+
                 Debug.WriteLine("Processing video...");
+
+                
                 dynamic videoScript = Py.Import("coords_to_json");
-                videoScript.process_video(modelPath);
+                string videoPath = Path.Combine(engineRoot, "deadlift_1.mp4");
+                PyObject coordinatesFrames = videoScript.process_video(videoPath, modelPath);
+                Debug.WriteLine($"Result: {coordinatesFrames}");
+
+                dynamic jsonMod = Py.Import("json");
+                string jsonString = jsonMod.dumps(coordinatesFrames).ToString();
+
+                // 3. Define the output path
+                string outputPath = Path.Combine(engineRoot, "motion_data_3d.json");
+
+                // 4. Write to disk using standard C#
+                File.WriteAllText(outputPath, jsonString);
+
+                Debug.WriteLine($"Result saved successfully to: {outputPath}");
 
                 //Debug.WriteLine("Generating BVH...");
-                //dynamic bvhScript = Py.Import("bvhjoint");
-                //PyObject result = bvhScript.write_bvh_no_hierarchy("motion_data_3d.json");
+                dynamic bvhScript = Py.Import("bvhjoint");
+                PyObject result = bvhScript.write_bvh_no_hierarchy("motion_data_3d.json");
 
-                //Debug.WriteLine($"Result: {result}");
+                Debug.WriteLine($"Result: {result}");
+
+                string outputBvhPath = Path.Combine(engineRoot, "animation_result.bvh");
+
+                try 
+                {
+                    // 3. Write the file using C# I/O
+                    File.WriteAllText(outputBvhPath, result.ToString());
+                    loadingSpinner.IsRunning = false;
+                    downloadButton.IsVisible = true;
+                    outputBvhPath = Path.Combine(engineRoot, "animation_result.bvh");
+                    Debug.WriteLine($"Successfully wrote BVH to: {outputBvhPath}");
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"C# File Error: {ex.Message}");
+                }
             }
         }
         catch (PythonException ex)
