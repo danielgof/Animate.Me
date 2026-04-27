@@ -11,9 +11,9 @@ import mediapipe as mp
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # Build the absolute path to the model file
-MODEL_PATH = os.path.join(SCRIPT_DIR, 'pose_landmarker_heavy.task')
-# Build the absolute path to the video (if it's in the same folder)
-VIDEO_PATH = os.path.join(SCRIPT_DIR, 'deadlift_1.mp4')
+# MODEL_PATH = os.path.join(SCRIPT_DIR, 'pose_landmarker_heavy.task')
+# # Build the absolute path to the video (if it's in the same folder)
+# VIDEO_PATH = os.path.join(SCRIPT_DIR, 'deadlift_1.mp4')
 BaseOptions = mp.tasks.BaseOptions
 PoseLandmarker = mp.tasks.vision.PoseLandmarker
 PoseLandmarkerOptions = mp.tasks.vision.PoseLandmarkerOptions

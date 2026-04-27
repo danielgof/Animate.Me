@@ -70,8 +70,6 @@ public partial class HomePage : ContentPage
             using (Py.GIL())
             {
                 dynamic sys = Py.Import("sys");
-                sys.stdout = sys.__stdout__;
-                sys.stderr = sys.__stderr__;
                 // Add local engine and site-packages to sys.path dynamically
                 sys.path.append(engineRoot);
                 sys.path.append(sitePackages);
@@ -83,10 +81,8 @@ public partial class HomePage : ContentPage
 
 
                 Debug.WriteLine("Processing video...");
-
-                
                 dynamic videoScript = Py.Import("coords_to_json");
-                string videoPath = Path.Combine(engineRoot, "deadlift_1.mp4");
+                string videoPath = fileResult.FullPath;
                 PyObject coordinatesFrames = videoScript.process_video(videoPath, modelPath);
                 Debug.WriteLine($"Result: {coordinatesFrames}");
 
