@@ -1,14 +1,40 @@
 using System.Diagnostics;
-using CommunityToolkit.Maui.Views;
 using Python.Runtime;
 
 namespace AnimateMe;
 
 public partial class HomePage : ContentPage
 {
+
+    string outputBvhPath;
+
     public HomePage()
     {
         InitializeComponent();
+    }
+
+    private async void OnDownloadClicked(object sender, EventArgs e)
+    {
+        try
+        {
+            // Ensure path is absolute and exists
+            if (File.Exists(outputBvhPath))
+            {
+                // Instead of Launcher.OpenAsync(OpenFileRequest), 
+                // try opening the folder itself so the user sees the file.
+                string folderPath = Path.GetDirectoryName(outputBvhPath);
+
+                await Launcher.Default.OpenAsync(new OpenFileRequest
+                {
+                    File = new ReadOnlyFile(outputBvhPath)
+                });
+            }
+        }
+        catch (ArgumentException)
+        {
+            // This specifically catches the 'Range' error
+            await DisplayAlert("Path Error", "The system could not access this file path format.", "OK");
+        }
     }
 
     private async void OnUploadFile(object sender, EventArgs args)
@@ -21,7 +47,7 @@ public partial class HomePage : ContentPage
         // 1. Setup UI and Paths
         videoPlayer.Source = fileResult.FullPath;
 
-        string baseDir = AppContext.BaseDirectory;
+        // string baseDir = AppContext.BaseDirectory;
         string engineRoot = Path.Combine(AppContext.BaseDirectory, "engine");
         string modelPath = Path.Combine(engineRoot, "pose_landmarker_heavy.task");
         string envRoot = Path.Combine(engineRoot, "python3.11");
@@ -44,7 +70,6 @@ public partial class HomePage : ContentPage
             using (Py.GIL())
             {
                 dynamic sys = Py.Import("sys");
-
                 // Add local engine and site-packages to sys.path dynamically
                 sys.path.append(engineRoot);
                 sys.path.append(sitePackages);
@@ -54,15 +79,45 @@ public partial class HomePage : ContentPage
                 //PyObject result = script.say_hello();
                 //Debug.WriteLine($"Python Script Result: {result}");
 
+
                 Debug.WriteLine("Processing video...");
                 dynamic videoScript = Py.Import("coords_to_json");
-                videoScript.process_video(modelPath);
+                string videoPath = fileResult.FullPath;
+                PyObject coordinatesFrames = videoScript.process_video(videoPath, modelPath);
+                Debug.WriteLine($"Result: {coordinatesFrames}");
 
-                Debug.WriteLine("Generating BVH...");
+                dynamic jsonMod = Py.Import("json");
+                string jsonString = jsonMod.dumps(coordinatesFrames).ToString();
+
+                // 3. Define the output path
+                string outputPath = Path.Combine(engineRoot, "motion_data_3d.json");
+
+                // 4. Write to disk using standard C#
+                File.WriteAllText(outputPath, jsonString);
+
+                Debug.WriteLine($"Result saved successfully to: {outputPath}");
+
+                //Debug.WriteLine("Generating BVH...");
                 dynamic bvhScript = Py.Import("bvhjoint");
                 PyObject result = bvhScript.write_bvh_no_hierarchy("motion_data_3d.json");
 
                 Debug.WriteLine($"Result: {result}");
+
+                string outputBvhPath = Path.Combine(engineRoot, "animation_result.bvh");
+
+                try 
+                {
+                    // 3. Write the file using C# I/O
+                    File.WriteAllText(outputBvhPath, result.ToString());
+                    loadingSpinner.IsRunning = false;
+                    downloadButton.IsVisible = true;
+                    this.outputBvhPath = Path.Combine(engineRoot, "animation_result.bvh");
+                    Debug.WriteLine($"Successfully wrote BVH to: {outputBvhPath}");
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"C# File Error: {ex.Message}");
+                }
             }
         }
         catch (PythonException ex)
