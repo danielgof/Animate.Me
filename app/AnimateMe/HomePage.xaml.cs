@@ -51,7 +51,7 @@ public partial class HomePage : ContentPage
 
             using var stream = File.OpenRead(outputBvhPath);
 
-            var result = await FileSaver.Default.SaveAsync("animation_result.bvh", stream);
+            var result = await FileSaver.Default.SaveAsync("animation_result.bvh", stream, CancellationToken.None);
 
             if (result.IsSuccessful)
             {
