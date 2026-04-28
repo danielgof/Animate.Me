@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Python.Runtime;
+using CommunityToolkit.Maui.Storage;
 
 namespace AnimateMe;
 
@@ -8,39 +9,71 @@ public partial class HomePage : ContentPage
 
     string outputBvhPath;
 
+
     public HomePage()
     {
         InitializeComponent();
     }
 
+    //private async void OnDownloadClicked(object sender, EventArgs e)
+    //{
+    //    try
+    //    {
+    //        if (!File.Exists(outputBvhPath))
+    //            return;
+
+    //        string fileName = Path.GetFileName(outputBvhPath);
+
+    //        // Example: Downloads folder
+    //        string downloadsPath = Path.Combine(
+    //            Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
+    //            "Downloads",
+    //            fileName);
+
+    //        File.Copy(outputBvhPath, downloadsPath, overwrite: true);
+
+    //        await DisplayAlert("Saved", $"File saved to:\n{downloadsPath}", "OK");
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        await DisplayAlert("Error", ex.Message, "OK");
+    //    }
+    //}
+
+    
+
     private async void OnDownloadClicked(object sender, EventArgs e)
     {
         try
         {
-            // Ensure path is absolute and exists
-            if (File.Exists(outputBvhPath))
-            {
-                // Instead of Launcher.OpenAsync(OpenFileRequest), 
-                // try opening the folder itself so the user sees the file.
-                string folderPath = Path.GetDirectoryName(outputBvhPath);
+            if (!File.Exists(outputBvhPath))
+                return;
 
-                await Launcher.Default.OpenAsync(new OpenFileRequest
-                {
-                    File = new ReadOnlyFile(outputBvhPath)
-                });
+            using var stream = File.OpenRead(outputBvhPath);
+
+            var result = await FileSaver.Default.SaveAsync("animation_result.bvh", stream);
+
+            if (result.IsSuccessful)
+            {
+                await DisplayAlert("Saved", $"File saved to:\n{result.FilePath}", "OK");
+            }
+            else
+            {
+                await DisplayAlert("Error", result.Exception?.Message ?? "Unknown error", "OK");
             }
         }
-        catch (ArgumentException)
+        catch (Exception ex)
         {
-            // This specifically catches the 'Range' error
-            await DisplayAlert("Path Error", "The system could not access this file path format.", "OK");
+            await DisplayAlert("Error", ex.Message, "OK");
         }
     }
 
-    private async void OnUploadFile(object sender, EventArgs args)
+private async void OnUploadFile(object sender, EventArgs args)
     {
         var options = new MediaPickerOptions { Title = "Select video" };
+        loadingSpinner.IsRunning = true;
         FileResult? fileResult = await MediaPicker.Default.PickVideoAsync(options);
+
 
         if (fileResult is null) return;
 
@@ -105,7 +138,7 @@ public partial class HomePage : ContentPage
 
                 string outputBvhPath = Path.Combine(engineRoot, "animation_result.bvh");
 
-                try 
+                try
                 {
                     // 3. Write the file using C# I/O
                     File.WriteAllText(outputBvhPath, result.ToString());
