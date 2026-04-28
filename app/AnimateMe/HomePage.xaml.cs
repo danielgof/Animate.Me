@@ -14,33 +14,7 @@ public partial class HomePage : ContentPage
     {
         InitializeComponent();
     }
-
-    //private async void OnDownloadClicked(object sender, EventArgs e)
-    //{
-    //    try
-    //    {
-    //        if (!File.Exists(outputBvhPath))
-    //            return;
-
-    //        string fileName = Path.GetFileName(outputBvhPath);
-
-    //        // Example: Downloads folder
-    //        string downloadsPath = Path.Combine(
-    //            Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
-    //            "Downloads",
-    //            fileName);
-
-    //        File.Copy(outputBvhPath, downloadsPath, overwrite: true);
-
-    //        await DisplayAlert("Saved", $"File saved to:\n{downloadsPath}", "OK");
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        await DisplayAlert("Error", ex.Message, "OK");
-    //    }
-    //}
-
-    
+   
 
     private async void OnDownloadClicked(object sender, EventArgs e)
     {
