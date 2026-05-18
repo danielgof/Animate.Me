@@ -104,7 +104,7 @@ public partial class HomePage : ContentPage
 
                 Debug.WriteLine($"Result saved successfully to: {outputPath}");
 
-                //Debug.WriteLine("Generating BVH...");
+                Debug.WriteLine("Generating BVH...");
                 dynamic bvhScript = Py.Import("bvhjoint");
                 PyObject result = bvhScript.write_bvh_no_hierarchy("motion_data_3d.json");
 

@@ -65,7 +65,7 @@ with PoseLandmarker.create_from_options(options) as landmarker:
 
 cap.release()
 cv2.destroyAllWindows()  # pylint: disable=no-member
-with open("motion_data_3d.json", "w", encoding="utf-8") as f:
+with open("motion_data_3d_skelethon.json", "w", encoding="utf-8") as f:
     json.dump(animation_data, f)
 
 print(f"Successfully saved {len(animation_data)} frames of 3D motion data.")

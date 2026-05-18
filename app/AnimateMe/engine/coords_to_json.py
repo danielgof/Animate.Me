@@ -11,23 +11,58 @@ import mediapipe as mp
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # Build the absolute path to the model file
-# MODEL_PATH = os.path.join(SCRIPT_DIR, 'pose_landmarker_heavy.task')
+MODEL_PATH = os.path.join(SCRIPT_DIR, "pose_landmarker_heavy.task")
 # # Build the absolute path to the video (if it's in the same folder)
-# VIDEO_PATH = os.path.join(SCRIPT_DIR, 'deadlift_1.mp4')
+VIDEO_PATH = os.path.join(SCRIPT_DIR, "deadlift_1.mp4")
 BaseOptions = mp.tasks.BaseOptions
 PoseLandmarker = mp.tasks.vision.PoseLandmarker
 PoseLandmarkerOptions = mp.tasks.vision.PoseLandmarkerOptions
 VisionRunningMode = mp.tasks.vision.RunningMode
 
+POSE_CONNECTIONS = [
+    # Face
+    [0, 1],
+    [1, 2],
+    [2, 3],
+    [0, 4],
+    [4, 5],
+    [5, 6],
+    # Torso
+    [11, 12],
+    [11, 23],
+    [12, 24],
+    [23, 24],
+    # Left arm
+    [11, 13],
+    [13, 15],
+    [15, 17],
+    [15, 19],
+    [15, 21],
+    # Right arm
+    [12, 14],
+    [14, 16],
+    [16, 18],
+    [16, 20],
+    [16, 22],
+    # Left leg
+    [23, 25],
+    [25, 27],
+    [27, 29],
+    [27, 31],
+    # Right leg
+    [24, 26],
+    [26, 28],
+    [28, 30],
+    [28, 32],
+]
 
 
 def process_video(video_path, model_path):
 
     options = PoseLandmarkerOptions(
         base_options=BaseOptions(model_asset_path=model_path),
-        running_mode=VisionRunningMode.VIDEO
+        running_mode=VisionRunningMode.VIDEO,
     )
-
 
     animation_data = []
     cap = cv2.VideoCapture(video_path)  # pylint: disable=no-member
@@ -46,7 +81,8 @@ def process_video(video_path, model_path):
 
             mp_image = mp.Image(
                 image_format=mp.ImageFormat.SRGB,
-                data=cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))  # pylint: disable=no-member
+                data=cv2.cvtColor(frame, cv2.COLOR_BGR2RGB),
+            )  # pylint: disable=no-member
 
             timestamp_ms = int((frame_count / fps) * 1000)
             result = landmarker.detect_for_video(mp_image, timestamp_ms)
@@ -54,7 +90,9 @@ def process_video(video_path, model_path):
             # --- DRAWING AND DATA EXTRACTION ---
             if result.pose_landmarks:
                 # 1. Save 3D World Landmarks for Blender/FBX
-                world_kpts = [[lm.x, lm.y, lm.z] for lm in result.pose_world_landmarks[0]]
+                world_kpts = [
+                    [lm.x, lm.y, lm.z] for lm in result.pose_world_landmarks[0]
+                ]
                 animation_data.append(world_kpts)
 
                 # 2. Draw 2D landmarks on the frame for visualization
@@ -64,12 +102,14 @@ def process_video(video_path, model_path):
                     pixel_y = int(landmark.y * frame_height)
 
                     # Draw a small green circle at each joint
-                    cv2.circle(frame, (pixel_x, pixel_y), 5, (0, 255, 0), -1)  # pylint: disable=no-member
+                    cv2.circle(
+                        frame, (pixel_x, pixel_y), 5, (0, 255, 0), -1
+                    )  # pylint: disable=no-member
 
             # Show the frame with coordinates drawn
             # cv2.imshow('Deadlift Processing...', frame)  # pylint: disable=no-member
 
-            if cv2.waitKey(1) & 0xFF == ord('q'):  # pylint: disable=no-member
+            if cv2.waitKey(1) & 0xFF == ord("q"):  # pylint: disable=no-member
                 break
 
             frame_count += 1
@@ -77,11 +117,12 @@ def process_video(video_path, model_path):
     # cap.release()
     # cv2.destroyAllWindows()  # pylint: disable=no-member
 
-    # with open(os.path.join(SCRIPT_DIR,"motion_data_3d.json"), "w", encoding="utf-8") as f:
-    #     json.dump(animation_data, f)
+    with open(os.path.join(SCRIPT_DIR, "skelethon.json"), "w", encoding="utf-8") as f:
+        json.dump({"skeleton": POSE_CONNECTIONS, "frames": animation_data}, f)
 
     # print(f"Successfully saved {len(animation_data)} frames of 3D motion data.")
 
-    return animation_data
+    return {"skeleton": POSE_CONNECTIONS, "frames": animation_data}
+
 
 # process_video(VIDEO_PATH, MODEL_PATH)
