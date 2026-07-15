@@ -1,0 +1,241 @@
+---
+import Layout from '../layouts/Layout.astro';
+import heroImage from '../assets/image.png';
+---
+
+<Layout
+	title="Animate.Me | Video to 3D Motion"
+	description="Animate.Me is a cross-platform .NET MAUI app that turns video motion into 3D animation data and BVH exports."
+>
+	<main class="page-shell">
+		<header class="hero">
+			<div class="hero__content">
+				<p class="eyebrow">Cross-platform motion capture workflow</p>
+				<h1>Animate.Me turns video into 3D animation data.</h1>
+				<p class="hero__text">
+					Animate.Me is a .NET MAUI application that estimates human pose from video,
+					exports motion as JSON and BVH, and helps creators bring animated characters to life.
+				</p>
+				<div class="hero__actions">
+					<a class="button button--primary" href="#getting-started">Get started</a>
+					<a class="button button--secondary" href="#architecture">Explore the stack</a>
+				</div>
+			</div>
+
+			<div class="hero__panel">
+				<img src={heroImage} alt="Animate.Me interface preview" class="hero__image" />
+				<h2>What the app does</h2>
+				<ul>
+					<li>Uploads and processes video directly in-app</li>
+					<li>Extracts pose and keypoint motion data</li>
+					<li>Creates reusable BVH animation output</li>
+					<li>Supports Windows, Android, iOS, and MacCatalyst</li>
+				</ul>
+			</div>
+		</header>
+
+		<section class="section" id="features">
+			<h2>Core features</h2>
+			<div class="card-grid">
+				<article class="card">
+					<h3>Video processing</h3>
+					<p>Capture motion from a selected video file and run pose estimation locally.</p>
+				</article>
+				<article class="card">
+					<h3>Structured output</h3>
+					<p>Export motion data into JSON and generate BVH animation files for downstream tools.</p>
+				</article>
+				<article class="card">
+					<h3>Cross-platform UI</h3>
+					<p>The MAUI frontend keeps the experience consistent across desktop and mobile targets.</p>
+				</article>
+			</div>
+		</section>
+
+		<section class="section" id="how-it-works">
+			<h2>How it works</h2>
+			<ol class="steps">
+				<li>Select a video from the app interface.</li>
+				<li>The embedded Python runtime initializes and runs pose estimation scripts.</li>
+				<li>Motion data is saved and converted into BVH animation output.</li>
+				<li>The generated animation can be imported into tools that support BVH files.</li>
+			</ol>
+		</section>
+
+		<section class="section" id="architecture">
+			<h2>Project structure</h2>
+			<div class="card-grid">
+				<article class="card">
+					<h3>App frontend</h3>
+					<p>The MAUI project lives under the app folder and contains the UI, page logic, and app shell.</p>
+				</article>
+				<article class="card">
+					<h3>Python engine</h3>
+					<p>Pose estimation and motion conversion scripts are stored alongside the embedded runtime assets.</p>
+				</article>
+				<article class="card">
+					<h3>Documentation site</h3>
+					<p>This website provides a simple entry point for understanding the project and getting started.</p>
+				</article>
+			</div>
+		</section>
+
+		<section class="section" id="getting-started">
+			<h2>Getting started</h2>
+			<p>Build and run the app from the MAUI project folder.</p>
+			<pre><code>cd app/AnimateMe
+dotnet build
+dotnet run</code></pre>
+			<p>Requirements include the .NET 9 SDK and a MAUI development environment such as Visual Studio 2022 or the .NET CLI.</p>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	:global(body) {
+		margin: 0;
+		font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+		background: linear-gradient(135deg, #07111f 0%, #10233e 100%);
+		color: #f5f7fb;
+	}
+
+	.page-shell {
+		max-width: 1120px;
+		margin: 0 auto;
+		padding: 3rem 1.5rem 4rem;
+	}
+
+	.hero {
+		display: grid;
+		grid-template-columns: 2fr 1fr;
+		gap: 2rem;
+		align-items: center;
+		padding: 2rem 0 3rem;
+	}
+
+	.eyebrow {
+		text-transform: uppercase;
+		letter-spacing: 0.2em;
+		font-size: 0.8rem;
+		font-weight: 700;
+		color: #6ee7f9;
+		margin-bottom: 0.75rem;
+	}
+
+	h1 {
+		font-size: clamp(2rem, 4vw, 3rem);
+		line-height: 1.1;
+		margin: 0 0 1rem;
+	}
+
+	.hero__text,
+	.card p,
+	.steps li,
+	.section p,
+	.section pre {
+		color: #dbe6f6;
+		line-height: 1.7;
+	}
+
+	.hero__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		margin-top: 1.5rem;
+	}
+
+	.button {
+		display: inline-block;
+		padding: 0.8rem 1.1rem;
+		border-radius: 999px;
+		text-decoration: none;
+		font-weight: 600;
+	}
+
+	.button--primary {
+		background: #6ee7f9;
+		color: #07111f;
+	}
+
+	.button--secondary {
+		border: 1px solid rgba(255, 255, 255, 0.2);
+		color: #f5f7fb;
+	}
+
+	.hero__panel,
+	.card,
+	.section {
+		background: rgba(255, 255, 255, 0.08);
+		border: 1px solid rgba(255, 255, 255, 0.12);
+		backdrop-filter: blur(12px);
+		border-radius: 1rem;
+		box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+	}
+
+	.hero__panel {
+		padding: 1.5rem;
+	}
+
+	.hero__image {
+		display: block;
+		width: 100%;
+		height: auto;
+		border-radius: 0.9rem;
+		margin-bottom: 1rem;
+		border: 1px solid rgba(255, 255, 255, 0.12);
+	}
+
+	.hero__panel ul {
+		padding-left: 1rem;
+		margin: 0;
+	}
+
+	.hero__panel li {
+		margin-bottom: 0.6rem;
+	}
+
+	.section {
+		padding: 1.5rem;
+		margin-top: 1.5rem;
+	}
+
+	.section h2 {
+		margin-top: 0;
+	}
+
+	.card-grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1rem;
+	}
+
+	.card {
+		padding: 1.1rem;
+	}
+
+	.steps {
+		padding-left: 1.1rem;
+		margin: 0;
+	}
+
+	.steps li {
+		margin-bottom: 0.7rem;
+	}
+
+	pre {
+		background: rgba(2, 8, 23, 0.5);
+		padding: 1rem;
+		border-radius: 0.75rem;
+		overflow-x: auto;
+	}
+
+	@media (max-width: 800px) {
+		.hero {
+			grid-template-columns: 1fr;
+		}
+
+		.card-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
